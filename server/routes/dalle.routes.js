@@ -1,14 +1,12 @@
 import express from 'express';
-import { Configuration, OpenAIApi } from 'openai'; // Replace 'your-module' with the actual module name
+
+import OpenAI from 'openai';
 
 const router = express.Router();
 
-const config = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY // Replace 'your-api-key' with the actual API key
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted
 });
-
-
-const openai = new OpenAIApi(config)
 
 
 router.route('/').get((req, res) => {
