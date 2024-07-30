@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import dalleRoutes from './routes/dalle.routes'; // Import or declare the variable 'dalleRoutes'
+import dalleRoutes from './routes/dalle.routes.js'; // Import or declare the variable 'dalleRoutes'
 
 dotenv.config();
 
