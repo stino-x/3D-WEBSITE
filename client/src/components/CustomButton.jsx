@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import { useSnapshot } from 'valtio'
 import state from '../store'
+import { getContrastingColor } from './../config/helpers';
 
 const CustomButton = ({title, customStyles, handleClick, type}) => {
     const snap  = useSnapshot(state)
     const generateStyle = (type) => {
         switch (type) {
             case 'filled':
-                return {backgroundColor: snap.color, color: '#fff'}
+                return {backgroundColor: snap.color, color: getContrastingColor(snap.color)}
             case 'outlined':
-                return 'border border-black text-black'
+                return {borderWidth: '1px', borderClor: snap.color, color: snap.color}
             default:
                 return 'bg-black text-white'
         }
