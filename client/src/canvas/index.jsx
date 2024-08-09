@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
+// import { Center } from '@react-three/drei';
 import { Environment, Center } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import CameraRig from './CameraRig';

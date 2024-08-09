@@ -9,9 +9,11 @@ import {
   slideAnimation
 } from "../config/motion";
 import { CustomButton } from "../components";
+//import { useState } from 'react';
 
 export default function Home() {
   const snap = useSnapshot(state);
+  //const [imageError, setImageError] = useState(false);
 
   console.log("Render Home Component, snap.intro:", snap.intro);
 
@@ -21,10 +23,16 @@ export default function Home() {
         <motion.section className="home" {...slideAnimation('left')}>
           <motion.header {...slideAnimation("down")}>
             <img 
-              src="/.threejs.png" 
+              src="/threejs.png"  // Correct path
               alt="logo" 
               className="w-8 h-8 object-contain" 
+              onError={(e) => {
+                console.error('Image failed to load', e);
+                console.log(e)
+                //setImageError(true);
+              }}
             />
+            {/* {imageError && <p className="error-message">Image failed to load</p>} */}
           </motion.header>
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>

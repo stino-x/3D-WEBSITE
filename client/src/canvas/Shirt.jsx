@@ -4,12 +4,14 @@ import state from "../store";
 import { easing } from 'maath';
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import * as THREE from 'three'; // Add this line to import the THREE object
 
 const Shirt = () => {
     const snap  = useSnapshot(state)
     const {nodes, materials} = useGLTF('/shirt_baked.glb');
-    const logoTexture = useTexture(snap.logoDecal)
-    const fullTexture = useTexture(snap.fullDecal)
+    const logoTexture = useTexture(snap.logoDecal) || new THREE.Texture(); // Use a default texture if loading fails
+    const fullTexture = useTexture(snap.fullDecal) || new THREE.Texture(); // Use a default texture if loading fails
+
 
     useFrame((state, delta) =>  easing.dampC(materials.lamber1.color, snap.color, 0.25, delta));
     const stateString = JSON.stringify(snap);
